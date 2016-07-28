@@ -1,0 +1,91 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="app-user">
+
+  <template>
+
+    <style>
+      :host {
+        display: inline-block;
+        margin: 0 1rem 1rem 0;
+        border: 2px solid #ddd;
+        padding: 1rem;
+
+        border-radius: 2px;
+        background-color: #fefefe;
+        color: #444;
+      }
+
+      .container {
+        display: table;
+      }
+
+      .image {
+        display: table-cell;
+        padding-right: 1rem;
+        vertical-align: middle;
+      }
+      img {
+        display: inline-block;;
+        height: 64px;
+        border-radius: 100%;
+        vertical-align: middle;
+      }
+
+      .info {
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 1.5;
+      }
+      .name {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .job {
+        font-size: 80%;
+        font-style: italic;
+      }
+    </style>
+
+    <div class="container">
+      <div class="image">
+
+        <!-- Cuando se quiere utilizar en un atributo HTML un valor de propiedad
+             se utiliza la notación en el atributo attribute$="". En caso contrario
+             el valor va a ser guardado como propiedad del elemento no como
+             atributo. -->
+        <img src$="{{profileImg}}">
+      </div>
+      <div class="info">
+        <div class="name">
+          <content></content>
+        </div>
+        <div class="job">{{job}}</div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'app-user',
+
+      // Definición de propiedades.
+      properties: {
+
+        // Propiedad de tipo string, sin embargo no se configura más.
+        // Nótese que aunque en `index.html` se usó el atributo `profile-img`,
+        // la definición y uso dentro del componente es convertida a
+        // camelCase `profileImg`.
+        profileImg: String,
+
+        // Propiedad con detallada configuración.
+        job: {
+          type: String,  // Tipo.
+          value: 'Programador'  // Valor por defecto.
+        }
+      }
+    });
+  </script>
+
+</dom-module>
