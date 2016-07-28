@@ -1,0 +1,120 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Importamos los componentes dependencias descargadas del catalogo de Polymer. -->
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+
+<dom-module id="app-city">
+
+  <template>
+
+    <!-- Para que podamos utilizar varios nuevos rasgos que ofrece Polymer para
+         personalizar nuestros estilos, es necesario agregar el atributo `is`
+         a la etiqueta <style>. -->
+    <style is="custom-style">
+      :host {
+        display: block;
+        margin: 0 0 1rem;
+      }
+
+      paper-card {
+        /* Podemos agregar variables CSS y reescribir si un componente ya tiene
+           definidos por defecto. En este caso reescribimos el color de header
+           de los <paper-card>. Más de esto en la documentación de cada componente. */
+        --paper-card-header-color: #fff;
+      }
+      paper-card ::content p {
+        margin: 0;
+      }
+
+      paper-dialog {
+        width: 100%;
+        max-width: 600px;
+        min-height: 400px;
+      }
+      paper-dialog google-youtube {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <paper-card heading$="{{heading}}" image$="{{image}}">
+
+      <div class="card-content">
+        <content></content>
+      </div>
+
+      <div class="card-actions">
+
+        <!-- Botones -->
+        <paper-button id="visit">
+
+          <!-- Iconos -->
+          <iron-icon icon="communication:location-on"></iron-icon> Visitar
+        </paper-button>
+      </div>
+
+      <!-- Ventanas de dialogos -->
+      <paper-dialog id="visit-dialog" entry-animation="scale-up-animation"
+      exit-animation="fade-out-animation" with-backdrop>
+
+        <!-- Vídeo de YouTube -->
+        <google-youtube id="visit-video" video-id$="{{video}}"
+        width="100%" height="400px"></google-youtube>
+
+      </paper-dialog>
+
+    </paper-card>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'app-city',
+
+      properties: {
+        heading: String,
+        image: String,
+        video: String
+      },
+
+      // Otra forma de seleccionar elementos es utilizando identificadores.
+      // Los key pueden definirse con `id.event`, donde el identificador debe
+      // encontrarse dentro del componente y el evento puede ser cualquier tipo.
+      // En este caso estamos utilizando componentes custom del elemento
+      // <paper-dialog>.
+      listeners: {
+        'visit.tap': 'onVisit',
+        'visit-dialog.iron-overlay-opened': 'onVisitDialogOpen',
+        'visit-dialog.iron-overlay-closed': 'onVisitDialogClose'
+      },
+
+      onVisit: function (e) {
+        var visitDialog = this.querySelector('paper-dialog');
+        visitDialog.open();
+      },
+
+      onVisitDialogOpen: function (e) {
+        var visitVideo = this.querySelector('google-youtube');
+        setTimeout(function () {
+          visitVideo.play();
+        }, 100);
+      },
+
+      onVisitDialogClose: function (e) {
+        var visitVideo = this.querySelector('google-youtube');
+        visitVideo.pause();
+      }
+
+    });
+  </script>
+
+</dom-module>

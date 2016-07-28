@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Ejemplo 5 - Catálogo de elementos de Polymer</title>
+
+    <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="./bower_components/polymer/polymer.html">
+    <link rel="import" href="./components/app-city.html">
+
+    <style>
+      /* Truco para maquetar mejor */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 40px;
+        font-family: sans-serif;
+      }
+      main {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 600px;
+      }
+      p {
+        margin: 0 0 1rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <main>
+
+      <h1>Ejemplo 5</h1>
+      <p>Catálogo de elementos de Polymer:</p>
+
+      <app-city heading="Tokyo" image="/img/tokyo.jpg" video="RXHdQQNGJfc">
+        <p>Tokio es la capital de facto de Japón, localizada en el centro-este de
+           la isla de Honshu, concretamente en la región de Kanto. En conjunto
+           forma una de las 47 prefecturas de Japón, aunque su denominación oficial
+           es metrópolis o capital.</p>
+      </app-city>
+
+      <app-city heading="Berlin" image="/img/berlin.jpg" video="ZYq67GhzYJM">
+        <p>Berlín es la capital de Alemania y uno de los dieciséis estados federados
+           alemanes. Se localiza al noreste de Alemania, a escasos 70 km de la
+           frontera con Polonia. Por la ciudad fluyen los ríos Spree, Havel, Panke,
+           Dahme y Wuhle. Con una población de 3,4 millones de habitantes, Berlín es
+           la ciudad más poblada del país, así como la segunda ciudad en tamaño y la
+           quinta aglomeración urbana entre los países de la Unión Europea.</p>
+      </app-city>
+
+      <app-city heading="San Francisco" image="/img/san-francisco.jpg" video="946pC3vq4As">
+        <p>San Francisco, oficialmente Ciudad y condado de San Francisco (en inglés:
+           City and County of San Francisco) es una ciudad que ocupa la cuarta
+           posición de ciudad más poblada del estado de California y la 13.ª de
+           Estados Unidos, con una población de aproximadamente 837 442 habitantes
+           en 2013.</p>
+      </app-city>
+
+    </main>
+  </body>
+</html>
