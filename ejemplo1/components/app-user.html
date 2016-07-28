@@ -1,0 +1,54 @@
+<!-- Es recomendable siempre requerir como dependencia
+     a Polymer al inicio de todos los componentes -->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Definición del componente (con el nombre como identificador) -->
+<dom-module id="app-user">
+
+  <!-- Contenido del componente, este es el local DOM -->
+  <template>
+
+    <!-- Estilos locales, deben estar dentro de <template></template> -->
+    <style>
+      /* El selector :host es el componente mismo */
+      :host {
+        display: inline-block;
+        margin: 0 1rem 1rem 0;
+        border: 2px solid #ddd;
+        padding: 1rem;
+
+        border-radius: 2px;
+        background-color: #fefefe;
+        color: #444;
+      }
+      .title {
+        font-style: italic;
+      }
+      .content {
+        font-weight: bold;
+      }
+    </style>
+
+    <div class="title">Usuario:</div>
+
+    <div class="content">
+      <!-- La etiqueta <content> es donde los elementos que el componente
+           tiene como hijos, serán agregados dentro del local DOM -->
+      <content></content>
+    </div>
+
+  </template>
+
+  <!-- Registro del componente en la librería -->
+  <script>
+    // Este es el prototypo del componente
+    Polymer({
+
+      // Nombre del componente, debe ser el mismo que el valor del atributo
+      // `id` de la etiqueta <dom-module>. Debe tener un prefijo separado por
+      // un dash (-)
+      is: 'app-user'
+    });
+  </script>
+
+</dom-module>
