@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="app-users-list">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 600px;
+      }
+      h2 {
+        margin: 0 0 1rem 0;
+        padding: 0;
+        color: #2c3e50;
+      }
+      /* Para aplicar estilos dentro de los elementos de contenido del componente,
+         es necesario utilizar el selector ::content y para compatibilidad,
+         utilizar otro selector dentro del componente mismo, por ejemplo :host */
+      :host ::content app-user {
+        width: 100%;
+        margin: 0;
+        background-color: #2c3e50;
+        border-color: #34495e;
+        color: #fff;
+      }
+      :host ::content app-user + app-user {
+        margin-top: 1rem;
+      }
+    </style>
+
+    <h2>Lista de usuarios</h2>
+
+    <div>
+      <content></content>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'app-users-list'
+    });
+  </script>
+
+</dom-module>

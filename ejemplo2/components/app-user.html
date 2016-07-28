@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="app-user">
+
+  <template>
+
+    <style>
+      :host {
+        display: inline-block;
+        margin: 0 1rem 1rem 0;
+        border: 2px solid #ddd;
+        padding: 1rem;
+
+        border-radius: 2px;
+        background-color: #fefefe;
+        color: #444;
+      }
+      .content {
+        font-weight: bold;
+      }
+    </style>
+
+    <div class="content">
+      <content></content>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'app-user'
+    });
+  </script>
+
+</dom-module>

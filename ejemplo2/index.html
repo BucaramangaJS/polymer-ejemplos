@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Ejemplo 2 - Componentes anidados</title>
+
+    <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="./bower_components/polymer/polymer.html">
+    <link rel="import" href="./components/app-user.html">
+    <link rel="import" href="./components/app-users-list.html">
+
+    <style>
+      /* Truco para maquetar mejor */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 40px;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Ejemplo 2</h1>
+    <p>Componentes anidados:</p>
+
+    <app-users-list>
+      <app-user>María Rodriguez</app-user>
+      <app-user>Juan Pérez</app-user>
+      <app-user>Karen Fernández</app-user>
+      <app-user>Carlos Martínez</app-user>
+    </app-users-list>
+
+  </body>
+</html>
