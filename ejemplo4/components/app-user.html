@@ -1,0 +1,130 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="app-user">
+
+  <template>
+
+    <style>
+      :host {
+        display: inline-block;
+        margin: 0 1rem 1rem 0;
+        cursor: pointer;
+      }
+
+      .container {
+        display: table;
+        width: 100%;
+        border: 2px solid #2c3e50;
+        padding: 1rem;
+        border-radius: 2px;
+        background-color: #34495e;
+        color: #fff;
+        transition: all 250ms;
+      }
+      /* Clase para mostrar cuando el usuario esté seleccionado */
+      .container.selected {
+        border-color: #d35400;
+        background-color: #e67e22;
+      }
+
+      .image {
+        display: table-cell;
+        padding-right: 1rem;
+        width: calc(64px + 1rem);
+        vertical-align: middle;
+      }
+      img {
+        display: inline-block;
+        width: 64px;
+        height: 64px;
+        border-radius: 100%;
+        vertical-align: middle;
+      }
+
+      .info {
+        display: table-cell;
+        vertical-align: middle;
+        line-height: 1.5;
+      }
+      .name {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .job {
+        font-size: 80%;
+        font-style: italic;
+      }
+    </style>
+
+    <!-- Usando un binding con una propiedad compuesta, el cual es básicamente
+         llamar a un método del prototypo del componente. Se le envían como
+         parámetros los nombres de las propiedades que compone separados por coma. -->
+    <div class$="container {{isSelected(selected)}}">
+      <div class="image">
+        <img src$="{{profileImg}}">
+      </div>
+      <div class="info">
+        <div class="name">
+          <content></content>
+        </div>
+        <div class="job">{{job}}</div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'app-user',
+
+      properties: {
+        profileImg: String,
+        job: {
+          type: String,
+          value: 'Programador'
+        },
+
+        // Propiedad que al ser cambiada, actualizará la vista.
+        selected: {
+
+          // El tipo Boolean indica que la propiedad está o no presente.
+          type: Boolean,
+
+          // Cuando la propiedad cambie, indicarlo con un evento en el elemento.
+          notify: true,
+
+          // Cuando la propiedad cambie, actualizar el cambio en el atributo.
+          reflectToAttribute: true,
+
+          // Valor por defecto.
+          value: false
+        }
+      },
+
+      // Lista de eventos por escuchar. Los keys son los nombres de eventos,
+      // y sus valores son los nombres de los métodos a ejecutar cuando se lanzen.
+      listeners: {
+        tap: 'toggleSelection'  // Cuando se presione/clickee
+      },
+
+      // Los métodos se pueden usar como propiedades compuestas (compound properties),
+      // recibiendo como parámetros los valores que se indicaron en la plantilla
+      // y debiendo devolver el valor de la propiedad compuesta.
+      isSelected: function (selected) {
+        return selected ? 'selected' : '';
+      },
+
+      toggleSelection: function () {
+        this.selected = !this.selected;
+        // también:
+        //this.set('selected', !this.get('selected'));
+      }
+
+      // Tener en cuenta que los nombres de los métodos no deben ser nombres ya
+      // utilizados en los prototipos del DOM. Por ejemplo, `className` es una
+      // propiedad que tienen los elementos del DOM y no podemos sobreescribarla.
+    });
+  </script>
+
+</dom-module>

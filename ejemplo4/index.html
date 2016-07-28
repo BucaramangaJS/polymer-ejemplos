@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Ejemplo 4 - Eventos, métodos y data binding</title>
+
+    <script src="./bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="./bower_components/polymer/polymer.html">
+    <link rel="import" href="./components/app-user.html">
+    <link rel="import" href="./components/app-users-list.html">
+
+    <style>
+      /* Truco para maquetar mejor */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 40px;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Ejemplo 4</h1>
+    <p>Eventos, métodos y data binding:</p>
+
+    <app-users-list header="Lista de usuarios">
+      <app-user profile-img="/img/user1.jpg" job="Programadora">María Rodriguez</app-user>
+      <app-user profile-img="/img/user2.jpg" job="Diseñador">Juan Pérez</app-user>
+
+      <!-- Las propiedades de tipo booleana determinan si están o no presentes.
+           Por ejemplo, select[multiple], option[selected], input[disabled]... -->
+      <app-user profile-img="/img/user3.jpg" job="Administradora" selected>Karen Fernández</app-user>
+      <app-user profile-img="/img/user4.jpg">Carlos Martínez</app-user>
+    </app-users-list>
+
+  </body>
+</html>

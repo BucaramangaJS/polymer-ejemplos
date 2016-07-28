@@ -1,0 +1,9 @@
+{
+  "name": "polymer-ejemplos",
+  "version": "1.0.0",
+  "description": "Ejemplos de la librería Polymer",
+  "private": true,
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}

@@ -1,0 +1,101 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="app-users-list">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 600px;
+      }
+      h2 {
+        margin: 0 0 1rem 0;
+        padding: 0;
+        color: #2c3e50;
+      }
+      :host ::content app-user {
+        width: 100%;
+        margin: 0;
+      }
+      :host ::content app-user + app-user {
+        margin-top: 1rem;
+      }
+      .list {
+        margin-bottom: 1rem;
+      }
+      button {
+        margin: 0 0 1rem 0;
+        border: 1px solid #8e44ad;
+        padding: 8px 16px;
+        border-radius: 2px;
+        background-color: #9b59b6;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+
+    <h2>{{header}}</h2>
+
+    <div class="list">
+      <content></content>
+    </div>
+
+    <!-- Para definir eventos en elementos se utiliza la notación on-event y sus
+         valores son métodos del prototypo del componente. -->
+    <div>
+      <button on-tap="onSelectAll">Seleccionar</button>
+      <button on-tap="onUnSelectAll">Deseleccionar</button>
+      <button on-tap="onInvert">Invertir</button>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'app-users-list',
+
+      properties: {
+        header: String
+      },
+
+      // Para eventos, recomendado usar nombres que inician con "on".
+      onSelectAll: function () {
+
+        // Tener en cuenta que en los métodos, el contexto `this` hace referencia
+        // al elemento del DOM del componente, así que podemos usar sus métodos.
+        // Por ejemplo, querySelector y querySelectorAll nos permitir seleccionar
+        // elementos por selectores CSS.
+        var users = this.querySelectorAll('app-user');
+
+        // Iteramos los elementos selccionados.
+        for (var i=0; i<users.length; i++) {
+
+          // Podemos acceder las propiedades de los componentes directamente.
+          users[i].selected = true;
+        }
+      },
+
+      onUnSelectAll: function () {
+        var users = this.querySelectorAll('app-user');
+        for (var i=0; i<users.length; i++) {
+          users[i].selected = false;
+        }
+      },
+
+      onInvert: function () {
+        var users = this.querySelectorAll('app-user');
+        for (var i=0; i<users.length; i++) {
+
+          // También podemos acceder los métodos de los componentes directamente.
+          users[i].toggleSelection();
+        }
+      }
+    });
+  </script>
+
+</dom-module>
