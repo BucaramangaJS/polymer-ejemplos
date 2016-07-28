@@ -8,7 +8,7 @@
   <!-- Contenido del componente, este es el local DOM -->
   <template>
 
-    <!-- Estilos locales, deben estar dentro de <template></template> -->
+    <!-- Estilos locales, deben estar dentro de <template> -->
     <style>
       /* El selector :host es el componente mismo */
       :host {
@@ -33,7 +33,8 @@
 
     <div class="content">
       <!-- La etiqueta <content> es donde los elementos que el componente
-           tiene como hijos, serán agregados dentro del local DOM -->
+           tiene como hijos, serán agregados dentro del local DOM. Sino es
+           usada, esos elementos no se utilizanran. -->
       <content></content>
     </div>
 
